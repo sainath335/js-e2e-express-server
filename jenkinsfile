@@ -1,10 +1,10 @@
 pipeline {
-    agent { label 'build_java_11' }
-    triggers { pollSCM('* * * * *') }
+    agent { label 'jdk11' }
+    triggers { pollSCM('0 * * * *') }
     stages {
         stage('SourceCode') {
             steps {
-                git branch: 'master', url: 'https://github.com/MattsManoj/js-e2e-express-server.git'
+                git branch: 'main', url: 'https://github.com/sainath335/js-e2e-express-server.git'
             }
         }
         stage('Build') {
