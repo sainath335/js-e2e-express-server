@@ -5,22 +5,14 @@ pipeline {
             steps {
                 git branch: 'main', url: 'https://github.com/sainath335/js-e2e-express-server.git'
             }
-        }
-        stage('install npm') {
+        }        
+        stage('Build') {
             steps {
-                sh 'npm install'               
+                sh'npm install'
+                sh'npm run build'
+                sh'npm install'
             }
-        }
-         stage('Build') {
-            steps {
-                sh 'npm run build'
-            }
-        }
-         stage('Test results') {
-            steps {
-                sh 'npm test'
-            }
-        }
+        }         
         stage('Code Analysis') {
             steps {
                 sh 'npm run sonar'
